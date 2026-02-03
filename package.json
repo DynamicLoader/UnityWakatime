@@ -1,0 +1,12 @@
+{
+  "name": "net.octz.wakatime.unity",
+  "displayName": "Unity WakaTime",
+  "version": "2.5.0",
+  "unity": "2022.3",
+  "description": "WakaTime plugin for Unity",
+  "keywords": [
+    "unity",
+    "wakatime"
+  ],
+  "category": "Productivity"
+}
