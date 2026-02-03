@@ -113,7 +113,7 @@ namespace WakaTime {
       public Heartbeat(string file, bool save = false) {
         entity = file == string.Empty ? "Unsaved Scene" : file;
         type = "file";
-        category = "coding";
+        category = "designing";
         time = (float) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         project = ProjectName;
         branch = "master";
@@ -143,6 +143,7 @@ namespace WakaTime {
       request.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(heartbeatJSON));
       request.SetRequestHeader("Content-Type", "application/json");
       request.SetRequestHeader("User-Agent", GetUserAgent());
+      request.SetRequestHeader("X-Machine-Name", UnityWebRequest.EscapeURL(GetMachineName()));
 
       request.SendWebRequest().completed +=
         operation => {
@@ -255,7 +256,6 @@ namespace WakaTime {
       string osVersion = GetOperatingSystemVersion();
       string osArch = System.Environment.Is64BitOperatingSystem ? "x64" : "x86";
       string editorVersion = Application.unityVersion;
-      string machineName = GetMachineName();
       string pluginVersion = "1.0.0";
 
       // WakaTime User-Agent format: wakatime/VERSION (OS) Editor/VERSION Plugin/VERSION
